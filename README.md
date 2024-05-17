@@ -57,7 +57,7 @@ obj["arr"].toString();
 
 ```cpp
 #include <string>
-#inclide <iostream>
+#include <iostream>
 #include "src/jsonelement.h"
 #include "src/reader.h"
 
