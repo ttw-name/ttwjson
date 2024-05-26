@@ -220,7 +220,10 @@ namespace ttw {
 				ss << std::boolalpha << m_val.bool_val;
 				break;
 			case JsonType::STRING:
-				ss << "\"" << *m_val.string_val << "\"";
+				ss << "\"";
+				if(m_val.string_val)
+					ss << *m_val.string_val
+				ss << "\"";
 				break;
 
 			case JsonType::INT:
@@ -262,7 +265,7 @@ namespace ttw {
 
 
 		std::string JsonElement::asString(){
-			if(m_type == JsonType::STRING){
+			if(m_type == JsonType::STRING && m_val.string_val){
                 return *m_val.string_val;
             }
             return "";
@@ -690,7 +693,7 @@ namespace ttw {
         }
 
 
-		JsonElement&& JsonElement::copy(JsonElement& val) {
+		JsonElement JsonElement::copy(JsonElement& val) {
 
 			JsonElement t;
 			t.m_deep = true;
